@@ -1,13 +1,23 @@
 {
-  "name": "Rust Bevy Development Space",
-  "image": "://microsoft.com",
-  "features": {
-    // ブラウザでLinuxデスクトップを表示するための機能
-    "ghcr.io/devcontainers/features/desktop-lite:1": {
-      "version": "1.1",
-      "uiToUse": "noVNC"
+  "name": "Bevy 0.20 WASM Environment",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "rust-lang.rust-analyzer",
+        "tamasfe.even-better-toml",
+        "serayuzgur.crates"
+      ]
     }
   },
-  // Bevyに必要なシステム依存ライブラリをコンテナ作成時に自動インストール
-  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y g++pkg-config libx11-dev libasound2-dev libudev-dev libwayland-dev libxkbcommon-dev"
+  "forwardPorts": [8080],
+  "portsAttributes": {
+    "8080": {
+      "label": "Trunk Dev Server",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "remoteUser": "vscode"
 }
