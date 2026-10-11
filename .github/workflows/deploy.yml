@@ -40,6 +40,9 @@ jobs:
       - name: Build with Trunk
         run: trunk build --release --public-url "/bevy_hello/"
 
+      - name: Copy assets to dist
+        run: cp -r assets dist/
+
       # 5. 生成された成果物をGitHub Pagesにアップロード
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
