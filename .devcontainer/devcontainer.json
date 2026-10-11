@@ -1,29 +1,17 @@
 {
-  "name": "Bevy WASM (Fast Startup)",
+  "name": "Bevy Development (Minimal)",
   "image": "mcr.microsoft.com/devcontainers/rust:1-bookworm",
 
-  // 1. システム依存関係のインストール（APT）
+  // Bevyのネイティブコード補完・静的解析に必要な最小限のシステムライブラリのみ
   "updateContentCommand": "sudo apt-get update && sudo apt-get install -y pkg-config libx11-dev libasound2-dev libudev-dev libwayland-dev libxkbcommon-dev lld clang",
-
-  // 2. WASMターゲットの追加 ＋ Trunkの事前ビルド済みバイナリを直接取得（1行に修正）
-  "postCreateCommand": "rustup target add wasm32-unknown-unknown && TRUNK_VERSION=$(curl -s https://api.github.com/repos/trunk-rs/trunk/releases/latest | grep 'tag_name' | cut -d'\"' -f4) && curl -sSL \"https://github.com/trunk-rs/trunk/releases/download/${TRUNK_VERSION}/trunk-x86_64-unknown-linux-gnu.tar.gz\" | sudo tar -xzf - -C /usr/local/bin/",
 
   "customizations": {
     "vscode": {
       "extensions": [
         "rust-lang.rust-analyzer",
         "tamasfe.even-better-toml",
-        // "serayuzgur.crates",
-        "fill-labs.dependi"
+        "serayuzgur.crates"
       ]
-    }
-  },
-
-  "forwardPorts": [8080],
-  "portsAttributes": {
-    "8080": {
-      "label": "Trunk Dev Server",
-      "onAutoForward": "openBrowser"
     }
   }
 }
