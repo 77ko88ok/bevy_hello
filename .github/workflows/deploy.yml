@@ -38,7 +38,7 @@ jobs:
 
       # 4. リリースモードでWASMビルドを実行
       - name: Build with Trunk
-        run: trunk build --release
+        run: trunk build --release --public-url "/77ko88ok/bevy_hello/"
 
       # 5. 生成された成果物をGitHub Pagesにアップロード
       - name: Upload artifact
@@ -57,4 +57,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        run: trunk build --release --public-url "/77ko88ok/bevy_hello/"
