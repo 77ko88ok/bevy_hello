@@ -1,0 +1,9 @@
+[build]
+# index.html のパス
+target = "index.html"
+# ビルド成果物の出力先
+dist = "dist"
+
+[watch]
+# 監視対象に assets を含める
+watch = ["index.html", "src", "assets"]
