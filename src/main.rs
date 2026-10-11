@@ -2,11 +2,11 @@ use bevy::prelude::*;
 
 fn main() {
     App::new()
-        .add_plugins(
-            DefaultPlugins.set(AssetPlugin {
-                meta_check: bevy::asset::AssetMetaCheck::Never, // これが必要
-                ..default()
-            })
+        .add_plugins(DefaultPlugins.set(AssetPlugin {
+            meta_check: bevy::asset::AssetMetaCheck::Never, // これが必要
+            ..default()
+        })
+        )
         .add_systems(Startup, setup) // セットアップシステムを追加
         .run();
 }
