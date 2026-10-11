@@ -1,15 +1,8 @@
 use bevy::prelude::*;
-use bevy::asset::*;
 
 fn main() {
     App::new()
-        .add_plugins((
-            DefaultPlugins
-                .set(AssetPlugin {
-                    meta_check: AssetMetaCheck::Never,
-                    ..default()
-                }),
-        ))
+        .add_plugins(DefaultPlugins)
         .add_systems(Startup, setup)
         .run();
 }
